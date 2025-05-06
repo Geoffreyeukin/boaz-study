@@ -1,0 +1,21 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AVIForm from './pages/AVIForm';
+import Layout from './components/Layout';
+import { AVIProvider } from './context/AVIContext';
+
+function App() {
+  return (
+    <AVIProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<AVIForm />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AVIProvider>
+  );
+}
+
+export default App;

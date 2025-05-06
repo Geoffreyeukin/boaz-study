@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Service pour l'application React
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: boaz-study-app
+    ports:
+      - "9000:9000"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Service pour un éventuel backend API (à décommenter si nécessaire)
+  # api:
+  #   build:
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   container_name: boaz-study-api
+  #   ports:
+  #     - "3001:3001"
+  #   environment:
+  #     - NODE_ENV=production
+  #   restart: unless-stopped
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
